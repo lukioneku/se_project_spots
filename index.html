@@ -113,7 +113,7 @@
         <div class="modal__container">
           <button type="button" class="modal__close-btn">X</button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form" name="edit-profile-form" novalidate>
+          <form class="modal__form" name="edit-profile-form" id="editProfileForm" novalidate>
             <label for="profile-name-input" class="modal__label">
               Name
             <input 
@@ -131,7 +131,7 @@
             <input 
               id="profile-description-input"
               type="text" 
-              name="profileName" 
+              name="profileDescription" 
               class="modal__input" 
               placeholder="Describe yourself" 
               required 
@@ -142,17 +142,17 @@
           </form>
         </div>
       </div>
-       <div class="modal" id="new-post-modal">
+      <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">X</button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form" name="new-post-form" novalidate>
+          <form class="modal__form" name="new-post-form" id="new-post-form" novalidate>
             <label for="card-image-input" class="modal__label">
               Image Link
             <input 
-              id="card-image-input"
+              id="card-image-url-input"
               type="url" 
-              name="profileName" 
+              name="cardImageUrl" 
               class="modal__input" 
               placeholder="Place a link to your picture" 
               required 
@@ -164,7 +164,7 @@
             <input 
               id="card-caption-input"
               type="text" 
-              name="profileName" 
+              name="cardCaption" 
               class="modal__input" 
               placeholder="Type your caption" 
               required 
