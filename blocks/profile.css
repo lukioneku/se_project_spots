@@ -65,7 +65,7 @@
   opacity: 70%;
   border: none;
   cursor: pointer;
-  transition: opacity 0.7 150ms ease;
+  transition: opacity 150ms ease 0.7s;
 }
 
 
@@ -85,7 +85,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
-  width: 149px;
   height: 52px;
   border-radius: 8px;
   padding-top: 18px;
@@ -95,6 +94,7 @@
   align-self: end;
   color: #fcf5e5;
   opacity: 1;
+  box-sizing: border-box;
 }
 
 .profile__add-btn:hover {

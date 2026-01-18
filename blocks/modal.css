@@ -9,10 +9,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal_is-opened {
     visibility: visible;
+    opacity: 1;
 }
 
 .modal__container {
@@ -24,6 +26,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .modal__close-btn {
@@ -36,6 +39,17 @@
     border: none;
     font-size: 16px;
     cursor: pointer;
+    background-image: url(../images/closebtn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.modal__close-btn:hover {
+  background-color: #2196f3;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .modal__title {
@@ -58,13 +72,15 @@
     display: block;
     margin: 8px 0 0;
     border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .modal__input::placeholder {
     color: #2121214d;
 }
 
-.modal_submit-btn {
+.modal__submit-btn {
     max-width: 156px;
     margin-top: 24px;
     padding: 12px 0;
