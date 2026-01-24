@@ -16,52 +16,57 @@ const newPostForm = newPostModal.querySelector('#new-post-form');
 const newPostCaptionInput = newPostModal.querySelector('#card-caption-input');
 const postImageUrlInput = newPostModal.querySelector('#card-image-url-input');
 
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
 
-editProfileBtn.addEventListener('click', function()  {
-editProfileNameInput.value = profileNameElement.textContent;
-editProfileDescriptionInput.value = profileDescriptionElement.textContent;
-editProfileModal.classList.add('modal_is-opened');
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
+
+editProfileBtn.addEventListener('click', function() {
+  editProfileNameInput.value = profileNameElement.textContent;
+  editProfileDescriptionInput.value = profileDescriptionElement.textContent;
+  openModal(editProfileModal);
 });
-editProfileCloseBtn.addEventListener('click', function()  {
-editProfileModal.classList.remove('modal_is-opened');
+
+editProfileCloseBtn.addEventListener('click', function() {
+  closeModal(editProfileModal);
 });
 
 newPostBtn.addEventListener('click', function()  {
-newPostModal.classList.add('modal_is-opened');
+openModal(newPostModal);
 });
 newPostCloseBtn.addEventListener('click', function()  {
-newPostModal.classList.remove('modal_is-opened');
+closeModal(newPostModal);
 });
 
 function handleEditProfileFormSubmit(event) {
     event.preventDefault();
 profileNameElement.textContent = editProfileNameInput.value;
 profileDescriptionElement.textContent = editProfileDescriptionInput.value;
-editProfileModal.classList.remove('modal_is-opened');
+closeModal(editProfileModal);
 }
 
-function handleNewPostFormSubmit(event) {
-    event.preventDefault();
-    const newPostItem = document.createElement('li');
-    newPostItem.className = "card";
-    const newPostImage = document.createElement('img');
-    newPostImage.className = "card__image";
-    const newPostContent = document.createElement('div');
-    newPostContent.className = "card__content";
-    const newPostCaption = document.createElement('h2');
-    newPostCaption.className = "card__title";
-    const newPostLikeBtn = document.createElement('button');
-    newPostLikeBtn.className = "card__like-btn";
-    newPostImage.src = postImageUrlInput.value;
-    newPostImage.alt = postImageUrlInput.value;
-    newPostCaption.textContent = newPostCaptionInput.value;
-    newPostItem.appendChild(newPostImage);
-    newPostItem.appendChild(newPostContent);
-    newPostContent.appendChild(newPostCaption);
-    newPostContent.appendChild(newPostLikeBtn);
-    document.querySelector('.cards__list').appendChild(newPostItem);
-newPostModal.classList.remove('modal_is-opened');
+const addCardFormElement = newPostModal.querySelector('#new-post-form');
+const nameInput = newPostModal.querySelector('#card-image-url-input'); // or whatever your input name is
+const linkInput = newPostModal.querySelector('#card-caption-input'); // or whatever your input name is
+
+// Step 2: Create the simple form handler
+function handleAddCardSubmit(evt) {
+  // Prevent the form from actually submitting
+  evt.preventDefault(); 
+ 
+  // Just log the values - that's it!
+  console.log('Name:', nameInput.value);
+  console.log('Link:', linkInput.value);
+
+  // Close the modal (using your reusable function)
+  closeModal(newPostModal);
 }
+
+// Step 3: Add the event listener
+addCardFormElement.addEventListener('submit', handleAddCardSubmit);
 
 editProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
-newPostForm.addEventListener('submit', handleNewPostFormSubmit);
+newPostForm.addEventListener('submit', handleAddCardSubmit);
