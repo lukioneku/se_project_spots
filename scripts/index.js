@@ -1,5 +1,9 @@
 const initialCards = [
   {
+    name: 'Golden Gate Bridge',
+    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg'
+  },
+  {
     name: 'Val Thorens',
     link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg'
    },
@@ -43,6 +47,44 @@ const newPostForm = newPostModal.querySelector('#new-post-form');
 const newPostCaptionInput = newPostModal.querySelector('#card-caption-input');
 const postImageUrlInput = newPostModal.querySelector('#card-image-url-input');
 
+const previewModal = document.querySelector('#preview-modal');
+const previewCloseBtn = previewModal.querySelector('.modal__close-btn');
+const previewImageElement = previewModal.querySelector('.modal__preview-image');
+const previewCaptionElement = previewModal.querySelector('.modal__preview-caption');
+
+const cardTemplate = document.querySelector('#card-template').content;
+const cardList = document.querySelector('.cards__list');
+
+function getCardElement(name, link) {
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardImageElement = cardElement.querySelector('.card__image');
+  cardImageElement.addEventListener('click', function() {
+    previewImageElement.src = link;
+    previewImageElement.alt = name;
+    previewCaptionElement.textContent = name;
+    openModal(previewModal); 
+  });
+  cardImageElement.src = link;
+  cardImageElement.alt = name;
+
+
+  const cardTitleElement = cardElement.querySelector('.card__title');
+  cardTitleElement.textContent = name;
+
+
+  const cardLikedBtnElement = cardElement.querySelector('.card__like-btn');
+  cardLikedBtnElement.addEventListener('click', function() {
+    cardLikedBtnElement.classList.toggle('card__like-btn_active');
+  });
+
+  const cardDeleteBtnElement = cardElement.querySelector('.card__delete-button');
+  cardDeleteBtnElement.addEventListener('click', function() {
+    cardElement.remove();
+  });
+
+  return cardElement;
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -67,6 +109,9 @@ openModal(newPostModal);
 newPostCloseBtn.addEventListener('click', function()  {
 closeModal(newPostModal);
 });
+previewCloseBtn.addEventListener('click', function()  {
+closeModal(previewModal);
+});
 
 function handleEditProfileFormSubmit(event) {
     event.preventDefault();
@@ -75,30 +120,28 @@ profileDescriptionElement.textContent = editProfileDescriptionInput.value;
 closeModal(editProfileModal);
 }
 
-const addCardFormElement = newPostModal.querySelector('#new-post-form');
-const nameInput = newPostModal.querySelector('#card-image-url-input'); // or whatever your input name is
-const linkInput = newPostModal.querySelector('#card-caption-input'); // or whatever your input name is
-
 // Step 2: Create the simple form handler
 function handleAddCardSubmit(evt) {
   // Prevent the form from actually submitting
-  evt.preventDefault(); 
+  evt.preventDefault();
  
   // Just log the values - that's it!
-  console.log('Name:', nameInput.value);
-  console.log('Link:', linkInput.value);
-
+  const InputValues = {
+    name: previewCaptionElement.textContent = newPostCaptionInput.value,
+    link: postImageUrlElement.src = newPostLinkInput.value
+  };
+  
+  const cardElement = getCardElement(InputValues.name, InputValues.link);
+  cardList.prepend(cardElement);
   // Close the modal (using your reusable function)
   closeModal(newPostModal);
 }
-
-// Step 3: Add the event listener
-addCardFormElement.addEventListener('submit', handleAddCardSubmit);
 
 editProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
 newPostForm.addEventListener('submit', handleAddCardSubmit);
 
 initialCards.forEach(function(card) {
-  console.log('Name:', card.name);
-  console.log('Link:', card.link);
+  const cardElement = getCardElement(card.name, card.link);
+  cardList.append(cardElement);
 });
+
