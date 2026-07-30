@@ -34,9 +34,9 @@
 .profile__description {
   margin: 0;
   font-family: Poppins, Arial, Helvetica, sans-serif;
-  color: #212121B2;
+  color: #212121b2;
   width: 420px;
-  opacity: 70%;
+  opacity: 0.7;
   font-weight: 500;
   line-height: 16px;
   font-size: 16px;
@@ -62,16 +62,15 @@
   max-width: 107.34px;
   height: 16px;
   gap: 8px;
-  opacity: 70%;
+  opacity: 0.7;
   border: none;
   cursor: pointer;
   transition: opacity 150ms ease 0.7s;
 }
 
-
 .profile__edit-btn:hover {
-    opacity: 1;
-    cursor: pointer;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .profile__add-btn {
@@ -95,10 +94,11 @@
   color: #fcf5e5;
   opacity: 1;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .profile__add-btn:hover {
-  opacity: 80%;
+  opacity: 0.8;
   cursor: pointer;
 }
 
@@ -138,5 +138,5 @@
   .profile__add-btn {
     margin: 0;
     width: 100%;
-}
+  }
 }
