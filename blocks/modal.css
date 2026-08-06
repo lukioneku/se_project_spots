@@ -104,6 +104,18 @@
   justify-content: center;
 }
 
+.modal__preview-caption {
+  margin: 10px 0 0;
+  align-self: flex-start;
+  padding: 4px 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  background-color: #212121;
+  border-radius: 8px;
+}
+
 .modal__submit-btn {
   font-size: 16px;
   line-height: 1;
@@ -133,6 +145,20 @@
     right: 12px;
   }
 
+    .modal__submit-btn {
+    max-width: none;
+  }
+
+  .modal__close-btn_type_preview {
+    top: -32px;
+    right: 0;
+  }
+
+  .modal__preview-caption {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  
   .modal__title {
     font-size: 20px;
     margin: 0 0 16px;
