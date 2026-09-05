@@ -85,6 +85,10 @@
   color: #212121;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 .modal__input::placeholder {
   color: #2121214d;
 }
@@ -132,6 +136,13 @@
 
 .modal__submit-btn:hover {
   background: #212121cc;
+}
+
+.modal__error {
+  display: block;
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 @media screen and (max-width: 627px) {

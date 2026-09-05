@@ -80,6 +80,7 @@
               required 
               minlength="2" 
               maxlength="30">
+              <span class="modal__error">ERROR!!!</span>
             </label>
             <label for="profile-description-input" class="modal__label">
               Description
@@ -92,6 +93,7 @@
               required 
               minlength="2" 
               maxlength="30">
+              <span class="modal__error">ERROR!!!</span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -110,8 +112,10 @@
               name="cardImageUrl" 
               class="modal__input" 
               placeholder="Place a link to your picture" 
-              required 
-              minlength="2" >
+              minlength="2"
+              maxlength="200"
+              required >
+              <span id="card-link-error" class="modal__error"></span>
             </label>
             <label for="card-caption-input" class="modal__label">
               Caption
@@ -121,9 +125,10 @@
               name="cardCaption" 
               class="modal__input" 
               placeholder="Type your caption" 
-              required 
               minlength="2" 
-              maxlength="30">
+              maxlength="30"
+              required >
+              <span id="card-caption-error" class="modal__error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -139,5 +144,6 @@
         </div>
     </div>
     <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
